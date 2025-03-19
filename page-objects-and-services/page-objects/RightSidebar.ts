@@ -19,7 +19,9 @@ export class RightSidebar {
 
     public verifyAgentInfoLabel(){
 
-        cy.xpath(this.lbl_AgentInfo).should('be.visible').and('contain', 'Agent Info')
+        cy.xpath(this.lbl_AgentInfo)
+        .should('be.visible')
+        .and('contain', 'Agent Info')
         .wait(1000);
         return this;
 
