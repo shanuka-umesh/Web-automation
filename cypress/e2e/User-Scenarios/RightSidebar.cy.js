@@ -11,9 +11,9 @@ describe("Right Sidebar test suite", () => {
 
   const chatAgents = [
     { name: "ATO Specialist" , description : "Agent trained on ATO content to answer ATO related queries." },
-   // { name: "AASB Specialist", description : "Agent trained to answer AASB implementation questions."},
-   // { name: "Policy Agent", description : "Agent to assist with in managing accounting & finance policy."},
-   // { name: "Board Paper Agent", description : "Agent specializing assisting CFO with board requests." },
+    { name: "AASB Specialist", description : "Agent trained to answer AASB implementation questions."},
+    { name: "Policy Agent", description : "Agent to assist with in managing accounting & finance policy."},
+    { name: "Board Paper Agent", description : "Agent specializing assisting CFO with board requests." },
   ]; 
 
   beforeEach(() => {
