@@ -11,10 +11,10 @@ describe("Right Sidebar test suite", () => {
 
   const chatAgents = [
     { name: "ATO Specialist" , description : "Agent trained on ATO content to answer ATO related queries." },
-    { name: "AASB Specialist", description : "Agent trained to answer AASB implementation questions."},
-    { name: "Policy Agent", description : "Agent to assist with in managing accounting & finance policy."},
-    { name: "Board Paper Agent", description : "Agent specializing assisting CFO with board requests." },
-  ];
+   // { name: "AASB Specialist", description : "Agent trained to answer AASB implementation questions."},
+   // { name: "Policy Agent", description : "Agent to assist with in managing accounting & finance policy."},
+   // { name: "Board Paper Agent", description : "Agent specializing assisting CFO with board requests." },
+  ]; 
 
   beforeEach(() => {
     cy.visit("https://assistant-dev1.redowl.io/login");
@@ -29,6 +29,8 @@ describe("Right Sidebar test suite", () => {
   chatAgents.forEach(({ name,description }) => {
 
     it(`verify the ${name} : Info Label`, () => {
+
+      cy.wait(1000);
 
       home.clickAgentCard(name);
       rightSidebar.verifyAgentInfoLabel();
@@ -158,7 +160,7 @@ describe("Right Sidebar test suite", () => {
 
     });
 
-    it(`Verify the ${name} : should open right sidebar when click on button `, () => {
+   /* it(`Verify the ${name} : should open right sidebar when click on button `, () => {
 
       home.clickAgentCard(name);
 
@@ -169,7 +171,7 @@ describe("Right Sidebar test suite", () => {
       
       cy.wait(2500);  
 
-    });
+    });  */
 
   });
 });

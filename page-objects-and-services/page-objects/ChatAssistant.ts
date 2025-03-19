@@ -10,24 +10,29 @@ export class ChatAssistant {
 
 
   public verifyChatAssistantHeaderTitle(title : string){
+    cy.wait(1000);
       cy.get(this.chatAssistantHeaderTitle).should('be.visible').and('contain', title);
       return this;
   }
 
   public typeMessage(message: string) {
+    cy.wait(1000);
     cy.get(this.txt_message).type(message);
     return this;
   }
 
   public sendMessage() {
+    cy.wait(1000);
     cy.get(this.btn_send).click();
     cy.window().then((win) => {
         cy.wrap(win.WebSocket.OPEN, { timeout: 10000 }).should("eq", 1); // Ensure WebSocket is open
     });
+    cy.wait(1000);
     return this;
   }
 
   public validateResponseExists() {
+    cy.wait(1000);
     cy.xpath(this.txt_response, { timeout: 15000 })
       .should("be.visible");
     return this;

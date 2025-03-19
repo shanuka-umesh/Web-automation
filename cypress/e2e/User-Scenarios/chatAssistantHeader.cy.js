@@ -18,6 +18,7 @@ describe("Chat Assistant Header test suite", () => {
 
     before(() => {
         cy.session('userLogin', () => {
+            cy.wait(1000);
             cy.visit('https://assistant-dev1.redowl.io/login');
             login.fillEmail("tammy@redowl.io")
                 .fillPassword("123456")
@@ -27,6 +28,7 @@ describe("Chat Assistant Header test suite", () => {
     });
 
     chatAgents.forEach(({ name }) => {
+        cy.wait(1000);
         it(`Verify ${name} Title when clicking on ${name}`, () => {
             home.clickAgentCard(name);
             chatAssistant.verifyChatAssistantHeaderTitle(name);

@@ -29,7 +29,7 @@ describe("Sidebar test suite", ()=>{
 
     menuItems.forEach(({ name, url }) => {
         it(`Click on the Menu Item: ${name} and verify navigation`, () => {
-            
+            cy.wait(1000);
             sidebar.sidebarItemIsVisible(name)
             .clickSidebarItem(name);
            
