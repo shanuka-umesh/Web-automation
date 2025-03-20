@@ -16,20 +16,21 @@ describe("Chat Assistant Header test suite", () => {
         { name: "Board Paper Agent" }
     ];
 
-    before(() => {
-        cy.session('userLogin', () => {
+    beforeEach(() => {
+        
             cy.wait(1000);
             cy.visit('https://assistant-dev1.redowl.io/login');
             login.fillEmail("tammy@redowl.io")
                 .fillPassword("123456")
                 .submit();
             cy.wait(5000);
-        });
+        
     });
 
     chatAgents.forEach(({ name }) => {
-        cy.wait(1000);
+        
         it(`Verify ${name} Title when clicking on ${name}`, () => {
+            
             home.clickAgentCard(name);
             chatAssistant.verifyChatAssistantHeaderTitle(name);
 
