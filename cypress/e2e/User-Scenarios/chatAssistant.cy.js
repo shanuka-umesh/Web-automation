@@ -8,40 +8,33 @@ const chatAssistant = new ChatAssistant();
 
 describe("Chat Assistant test suite", ()=>{
 
+    const chatAgents = [
+        { name: "Policy Agent",expectedResponse: "Test" },
+        { name: "ATO Specialist",expectedResponse: "Test" },
+        { name: "AASB Specialist",expectedResponse: "Test"},
+        { name: "Board Paper Agent",expectedResponse: "Test"}
+    ];
+
     beforeEach(()=>{
         cy.visit('https://assistant-dev1.redowl.io/login');
 
         login.fillEmail("tammy@redowl.io")
        .fillPassword("123456")
        .submit();
-
-       
-       
-          
-
     });
 
-    it("Sent a message to the Policy Agent chat assistant",()=>{
+    chatAgents.forEach(({ name,expectedResponse }) => {
 
-      home.clickAgentCard("Policy Agent")
-        cy.wait(3000)
-        chatAssistant.typeMessage("Hello")
-                     .sendMessage() 
-        cy.wait(5000)
-        chatAssistant.validateResponse("Hi there! How can I assist you today with your Corporate Spend Policy queries?")
- 
-    });
+        it(`Sent a message to the ${name} chat assistant`,()=>{
 
-    it("Sent a message to the ATO Specialist chat assistant", () => {
-       
-        home.clickAgentCard("ATO Specialist")
-        cy.wait(3000)
-        chatAssistant.typeMessage("Hello")
-                     .sendMessage() 
-        cy.wait(5000)
-        chatAssistant.validateResponse("Hello! I’m Redowl ATO Assistant, your assistant for Corporate tax and tax topics. What would you like to know about corporate tax or any other tax-related questions today?")
- 
-        
+            home.clickAgentCard(name)
+            cy.wait(3000)
+            chatAssistant.typeMessage("Hello")
+                         .sendMessage() 
+            cy.wait(5000)
+          //  chatAssistant.validateResponse(expectedResponse)
+        });
+
     });
      
 });

@@ -11,21 +11,26 @@
     }
 
     fillEmail(email: string) {
-        cy.wait(1000);
-        cy.get(this.txt_email).should('not.be.disabled').type(email);
-        cy.wait(1000);
+        
+        cy.get(this.txt_email)
+        .type('{selectall}{backspace}', { force: true }); 
+        cy.get(this.txt_email)
+        .type('tammy@redowl.io', { force: true });
+
+
+        
         return this;
     }
 
     fillPassword(password: string) {
-        cy.wait(1000);
-        cy.get(this.txt_password).should('not.be.disabled').type(password);
-        cy.wait(1000);
+       
+        cy.get(this.txt_password).should('be.visible').type(password);
+       
         return this;
     }
 
     submit() {
-        cy.wait(1000);
+        cy.wait(1000); 
         cy.get(this.btn_login).should('be.enabled').click();
         
         return this;

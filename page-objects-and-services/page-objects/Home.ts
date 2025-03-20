@@ -9,7 +9,6 @@ export class Home {
 
     public clickAgentCard(agentName: string){
 
-        this.visit();
         cy.wait(2500);
         cy.get(this.card_Agent)
         .contains(agentName)

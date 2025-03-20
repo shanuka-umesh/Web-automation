@@ -8,7 +8,7 @@ const login = new Login();
 const home = new Home();
 
 describe("Right Sidebar test suite", () => {
-
+ 
   const chatAgents = [
     { name: "ATO Specialist" , description : "Agent trained on ATO content to answer ATO related queries." },
     { name: "AASB Specialist", description : "Agent trained to answer AASB implementation questions."},
@@ -17,13 +17,14 @@ describe("Right Sidebar test suite", () => {
   ]; 
 
   beforeEach(() => {
-    cy.visit("https://assistant-dev1.redowl.io/login");
-
-    login.fillEmail("tammy@redowl.io")
-                .fillPassword("123456")
-                .submit();
+    
+    login.visit()
+        .fillEmail("tammy@redowl.io")
+        .fillPassword("123456")
+        .submit();
 
     cy.wait(2500);
+    
   });
 
   chatAgents.forEach(({ name,description }) => {
