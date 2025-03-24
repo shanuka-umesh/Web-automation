@@ -1,11 +1,13 @@
 import { RightSidebar } from "../../../page-objects-and-services/page-objects/RightSidebar";
 import { Login } from "../../../page-objects-and-services/page-objects/login";
 import { Home } from "../../../page-objects-and-services/page-objects/Home";
+import { ChatAssistant } from "../../../page-objects-and-services/page-objects/ChatAssistant";
 
 
 const rightSidebar = new RightSidebar();
 const login = new Login();
 const home = new Home();
+const chatAssistant = new ChatAssistant();
 
 describe("Right Sidebar test suite", () => {
  
@@ -28,6 +30,9 @@ describe("Right Sidebar test suite", () => {
   });
 
   chatAgents.forEach(({ name,description }) => {
+
+    
+
 
     it(`verify the ${name} : Info Label`, () => {
 
@@ -102,6 +107,50 @@ describe("Right Sidebar test suite", () => {
       cy.wait(2500);
 
     });
+
+
+    it(`Verify the ${name} : Last Activity Label `, () => {
+
+      home.clickAgentCard(name);
+
+      chatAssistant.typeMessage("Hello")
+      .sendMessage();
+
+      cy.wait(2500);
+
+      rightSidebar.verifyLastActivityLabel();
+      
+      cy.wait(1500);
+
+    });
+
+    it(`Verify the ${name} : Last Activity Date and Time `, () => {
+      
+      home.clickAgentCard(name);
+
+      chatAssistant.typeMessage("Hello")
+      .sendMessage();
+
+      cy.wait(3500);
+
+      rightSidebar.verifyDateAndTimeVisible();
+      
+      cy.wait(1500);
+    });
+
+    it(`should match the ${name} : last response date-time with the expected value`, () => {
+
+      home.clickAgentCard(name);
+
+      chatAssistant.typeMessage("Hello")
+      .sendMessage();
+
+      cy.wait(3500);
+
+      rightSidebar.checkLastResponseDateTimeEquality();
+      
+    });
+
 
     it(`verify the ${name} : User Info Label`, () => {
 

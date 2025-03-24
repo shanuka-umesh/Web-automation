@@ -15,6 +15,10 @@ export class RightSidebar {
     private btn_ShareConversation = "//button[normalize-space()='Share Conversation']"
     private btn_closeInfoPanel = "//button[@title='Close info panel']//*[name()='svg']"
     private area_rightSidebar = "//div[@class='lg:block border-l border-border transition-all duration-300 w-80 opacity-100']"
+    private lbl_lastActivity = "//span[normalize-space()='Last activity']"
+    private dateAndTime = "//span[@class='text-xs text-blue-400']"
+    private lastResponseDateTime = "(//span[contains(@class, 'text-gray-600')])[last()]";
+    private expectedDateTime = "//div[h3[contains(text(), 'Conversation Stats')]]//span[@class='text-xs text-blue-400']";
 
 
     public verifyAgentInfoLabel(){
@@ -86,6 +90,59 @@ export class RightSidebar {
         return this;
 
     }
+
+    public verifyLastActivityLabel(){
+        cy.wait(1000);
+        cy.xpath(this.lbl_lastActivity).should('be.visible').and('contain', 'Last activity');
+        cy.wait(1000);
+        return this;
+
+    }
+
+    public verifyDateAndTimeVisible(){
+        cy.wait(1000);
+        cy.xpath(this.dateAndTime).should('be.visible');
+        cy.wait(1000);
+        return this;
+
+    }
+
+    public checkLastResponseDateTimeEquality() {
+        cy.xpath(this.lastResponseDateTime)  // Captures the last response datetime
+            .invoke('text')
+            .then((chatbotResponse) => {
+                // Format the response to match the expected format
+                const formattedChatbotResponse = new Date(chatbotResponse).toLocaleString('en-US', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                });
+    
+                cy.xpath(this.expectedDateTime)  // Selects the expected datetime span
+                    .invoke('text')
+                    .then((expectedDate) => {
+                        // Normalize the expected date into the same format as the response
+                        const formattedExpectedDate = new Date(expectedDate).toLocaleString('en-US', {
+                            year: 'numeric',
+                            month: '2-digit',
+                            day: '2-digit',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            second: '2-digit',
+                        });
+    
+                        // Compare both dates
+                        expect(formattedChatbotResponse).to.equal(formattedExpectedDate);
+                    });
+            });
+        return this;
+    }
+    
+    
+    
 
     public verifyUserInfoLabel(){
         cy.wait(1000)
