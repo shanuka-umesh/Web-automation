@@ -1,6 +1,8 @@
 export class Home {
 
     private card_Agent = 'ul:nth-child(4) > li'
+    private btn_logOutStep01= "//button[@data-cy='sidebar_user_nav']"
+    private btn_logOutStep02 = "//button[@data-cy='signout']"
     
     public visit(){
         cy.visit('https://assistant-dev1.redowl.io');
@@ -43,6 +45,30 @@ export class Home {
         cy.wait(1000);
 
         return this;
+    }
+
+    public logOut(){
+
+        cy.visit('https://assistant-dev1.redowl.io');
+        cy.wait(1000);
+        cy.xpath(this.btn_logOutStep01).click();
+        cy.xpath(this.btn_logOutStep02).click();
+
+        cy.wait(2000);
+
+    
+          cy.clearCookies()
+             .clearLocalStorage()
+
+             .window().then((win) => {
+
+                 win.sessionStorage.clear();
+                 
+             });
+
+    
+    cy.url().should('include', '/login');
+
     }
 
 }

@@ -10,6 +10,7 @@ describe("Sidebar test suite", ()=>{
 
     const menuItems = [
         { name: "Dashboard", url: "/dashboard" },
+        { name: "Summary", url: "/summary" },
         { name: "Apps", url: "/" },
         { name: "Knowledge", url: "/" },
         { name: "Tasks", url: "/" },
@@ -17,18 +18,19 @@ describe("Sidebar test suite", ()=>{
         { name: "Reports", url: "/" }
     ];
 
-    beforeEach(()=>{
+    
+   beforeEach(() => {
+    login.createLoginSession();
+    cy.visit('https://assistant-dev1.redowl.io');
+});
 
-        cy.visit('https://assistant-dev1.redowl.io/login');
-
-        login.fillEmail("tammy@redowl.io")
-       .fillPassword("123456")
-       .submit();
-
-    });
+after(() => {
+    home.logOut();
+});
 
     menuItems.forEach(({ name, url }) => {
         it(`Click on the Menu Item: ${name} and verify navigation`, () => {
+            
             cy.wait(1000);
             sidebar.sidebarItemIsVisible(name)
             .clickSidebarItem(name);

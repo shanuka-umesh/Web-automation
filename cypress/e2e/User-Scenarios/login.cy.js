@@ -8,6 +8,10 @@ describe("Login test suite", ()=>{
         login.visit();
     });
 
+    after(() => {
+        home.logOut();
+    });
+
     it("Login with valid credentials", ()=>{
         login.fillEmail("tammy@redowl.io")
         .fillPassword("123456")

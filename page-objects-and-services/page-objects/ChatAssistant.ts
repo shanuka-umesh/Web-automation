@@ -1,3 +1,4 @@
+import { should } from 'chai';
 import 'cypress-xpath';
 
 export class ChatAssistant {
@@ -26,7 +27,7 @@ export class ChatAssistant {
 
   public sendMessage() {
     cy.wait(1000);
-    cy.get(this.btn_send).click();
+    cy.get(this.btn_send).click();  
     cy.window().then((win) => {
         cy.wrap(win.WebSocket.OPEN, { timeout: 10000 }).should("eq", 1); // Ensure WebSocket is open
     });
@@ -41,16 +42,20 @@ export class ChatAssistant {
     return this;
   }
 
-  public validateResponse(expectedResponse: string) {
-
+  public validateResponse(expectedResponse: string) { 
     cy.xpath(this.txt_response01, { timeout: 10000 })
-      .should("be.visible")
-      .and("contain", expectedResponse);
+      .invoke('text')
+      .then((text: string) => {
+        cy.log(text);
+
+        const actualResponse = text.replace(/\s+/g, ' ').trim();
+        const normalizedExpected = expectedResponse.replace(/\s+/g, ' ').trim();
+
+        cy.wrap(actualResponse).should('contain', normalizedExpected); // Uses Cypress retry mechanism
+      });
     return this;
-
   }
-
-
+ 
   public validateStepslabel(){
 
       cy.xpath(this.lbl_steps, { timeout: 15000 }).should("be.visible").and('contain', 'Steps');

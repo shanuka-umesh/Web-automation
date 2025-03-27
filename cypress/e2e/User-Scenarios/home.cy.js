@@ -14,14 +14,12 @@ describe("Home page test suite", ()=>{
         { name: "Board Paper Agent" }
     ]
     
-    beforeEach(()=>{
-         cy.visit('https://assistant-dev1.redowl.io/login');
-
-         login.fillEmail("tammy@redowl.io")
-        .fillPassword("123456")
-        .submit();
-
+    beforeEach(() => {
+        login.createLoginSession();
+        cy.visit('https://assistant-dev1.redowl.io');
     });
+
+    
 
     agentName.forEach(({ name }) => {
 
@@ -38,6 +36,10 @@ describe("Home page test suite", ()=>{
     it("Verify Doc Specialist card not visible",()=>{
         home.verifyCardVisibleNotEnable("Doc Specialist");
     })
+
+    after(() => {
+        home.logOut();
+    });
 
     
 

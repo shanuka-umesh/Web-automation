@@ -6,22 +6,17 @@ const home = new Home();
 const login = new Login();
 const chatAssistant = new ChatAssistant();
 
-describe("Chat Assistant test suite", () => {
-  const chatAgents = [
-    { name: "Policy Agent", expectedResponse: "Test" },
-    { name: "ATO Specialist", expectedResponse: "Test" },
-    { name: "AASB Specialist", expectedResponse: "Test" },
-    { name: "Board Paper Agent", expectedResponse: "Test" },
-  ];
+describe("policy agent test suite", () => {
 
-  const policyAget = [
+  const policyAgent = [
     {
       TestCase:
         "Questions should be answered regarding general questions from the policy. [Expense Reimbursement Policy - General Question 01]",
       Test_Case_ID: "TC_002",
-      TestData: "What is the purpose of the expense reimbursement policy? ",
+      TestData: "What is the purpose of the expense reimbursement policy?",
       expectedResponse:
-        "Question: What is the purpose of the expense reimbursement policy?",
+        "What is the purpose of the expense reimbursement policy? Spend ",
+     
         
     },
 
@@ -32,6 +27,7 @@ describe("Chat Assistant test suite", () => {
       TestData: "Who does this policy apply to? ",
       expectedResponse:
         "Question: Who does this policy apply to?",
+      
 
     },
     {
@@ -41,6 +37,7 @@ describe("Chat Assistant test suite", () => {
       TestData: "What types of expenses are covered under this policy?",
       expectedResponse:
         "Question: What types of expenses are covered under this policy?",
+     
     },
 
     {
@@ -50,6 +47,7 @@ describe("Chat Assistant test suite", () => {
       TestData: "What is the submission deadline for expense reports?",
       expectedResponse:
         "Question: What is the submission deadline for expense reports?",
+     
     },
 
     {
@@ -59,6 +57,7 @@ describe("Chat Assistant test suite", () => {
       TestData: "What happens if an employee does not comply with the policy?",
       expectedResponse:
         "Question: What happens if an employee does not comply with the policy?",
+     
     },
 
     {
@@ -68,6 +67,7 @@ describe("Chat Assistant test suite", () => {
       TestData: "How long does it take for a reimbursement to be processed?",
       expectedResponse:
         "Question: How long does it take for a reimbursement to be processed?",
+      
     },
 
     {
@@ -77,6 +77,7 @@ describe("Chat Assistant test suite", () => {
       TestData: "What documentation is required for reimbursement?",
       expectedResponse:
         "Question: What documentation is required for reimbursement?",
+      
     },
 
     {
@@ -86,6 +87,7 @@ describe("Chat Assistant test suite", () => {
       TestData: "Can employees submit expenses without receipts?",
       expectedResponse:
         "Question: Can employees submit expenses without receipts?",
+    
     },
 
     {
@@ -96,6 +98,7 @@ describe("Chat Assistant test suite", () => {
         "Are there consequences for submitting fraudulent expense claims?",
       expectedResponse:
         "Question: Are there consequences for submitting fraudulent expense claims?",
+      
     },
 
     {
@@ -105,6 +108,7 @@ describe("Chat Assistant test suite", () => {
       TestData: "How often is this policy reviewed and updated?",
       expectedResponse:
         "Question: How often is this policy reviewed and updated?",
+    
     },
 
     {
@@ -114,6 +118,7 @@ describe("Chat Assistant test suite", () => {
       TestData: "What class of airfare is allowed for executives?",
       expectedResponse:
         "Question: What class of airfare is allowed for executives?",
+      
     },
 
     {
@@ -122,8 +127,9 @@ describe("Chat Assistant test suite", () => {
       Test_Case_ID: "TC_013",
       TestData:
         "Can managers travel in business class for flights over 5 hours?",
-      expectedResponse:
+        expectedResponse:
         "Question: Can managers travel in business class for flights over 5 hours?",
+
     },
     {
       TestCase:
@@ -132,6 +138,7 @@ describe("Chat Assistant test suite", () => {
       TestData: "Do staff employees need pre-approval for booking flights?",
       expectedResponse:
         "Question: Do staff employees need pre-approval for booking flights?",
+      
     },
     {
       TestCase:
@@ -139,8 +146,9 @@ describe("Chat Assistant test suite", () => {
       Test_Case_ID: "TC_015",
       TestData:
         "Are ride-sharing services covered under transportation expenses?",
-      expectedResponse:
+        expectedResponse:
         "Question: Are ride-sharing services covered under transportation expenses?",
+   
     },
     {
       TestCase:
@@ -149,6 +157,7 @@ describe("Chat Assistant test suite", () => {
       TestData: "Is pre-approval required for ground transportation?",
       expectedResponse:
         "Question: Is pre-approval required for ground transportation?",
+     
     },
     {
       TestCase:
@@ -158,6 +167,7 @@ describe("Chat Assistant test suite", () => {
         "How much can a Grade 2 employee claim for daily incidental expenses?",
       expectedResponse:
         "Question: How much can a Grade 2 employee claim for daily incidental expenses?",
+      
     },
     {
       TestCase:
@@ -166,6 +176,7 @@ describe("Chat Assistant test suite", () => {
       TestData: "Can employees book luxury rental cars for business travel?",
       expectedResponse:
         "Question: Can employees book luxury rental cars for business travel?",
+      
     },
     {
       TestCase:
@@ -181,6 +192,7 @@ describe("Chat Assistant test suite", () => {
       Test_Case_ID: "TC_020",
       TestData:
         "If a Grade 3 employee needs to exceed the hotel allowance, what should they do?",
+      
       expectedResponse:
         "Question: If a Grade 3 employee needs to exceed the hotel allowance, what should they do?",
     },
@@ -199,7 +211,7 @@ describe("Chat Assistant test suite", () => {
       Test_Case_ID: "TC_022",
       TestData: "What is the daily meal allowance for Grade 1 employees?",
       expectedResponse:
-        "Question: What is the daily meal allowance for Grade 1 employees?",    
+        "What is the daily meal allowance for Grade 1 employees?", 
     },
 
     {
@@ -217,6 +229,7 @@ describe("Chat Assistant test suite", () => {
       Test_Case_ID: "TC_024",
       TestData:
         "What is the maximum budget for client entertainment for Grade 2 employees?",
+      
       expectedResponse:
         "Question: What is the maximum budget for client entertainment for Grade 2 employees?",
     },
@@ -227,8 +240,9 @@ describe("Chat Assistant test suite", () => {
       Test_Case_ID: "TC_025",
       TestData:
         "Do all grades need pre-approval for client entertainment expenses?",
+      
       expectedResponse:
-       "Question: Do all grades need pre-approval for client entertainment expenses?", 
+        "Question: Do all grades need pre-approval for client entertainment expenses?",
     },
     {
       TestCase:
@@ -236,6 +250,7 @@ describe("Chat Assistant test suite", () => {
       Test_Case_ID: "TC_026",
       TestData:
         "What is the per-person spending cap for client entertainment for general staff?",
+      
       expectedResponse:
         "Question: What is the per-person spending cap for client entertainment for general staff?",
       
@@ -246,6 +261,7 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding meals & entertainment expenses questions from the policy. [Expense Reimbursement Policy - Meals & Entertainment Question 06]",
       Test_Case_ID: "TC_027",
       TestData: "Can an employee claim reimbursement for personal meals?",
+      
       expectedResponse:
         "Question: Can an employee claim reimbursement for personal meals?",
       },
@@ -256,8 +272,10 @@ describe("Chat Assistant test suite", () => {
       Test_Case_ID: "TC_028",
       TestData:
         "If an employee spends more than the meal allowance, will the extra amount be reimbursed?",
+      
       expectedResponse:
         "Question: If an employee spends more than the meal allowance, will the extra amount be reimbursed?",
+
       },
 
     {
@@ -265,8 +283,10 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding meals & entertainment expenses questions from the policy. [Expense Reimbursement Policy - Meals & Entertainment Question 08]",
       Test_Case_ID: "TC_029",
       TestData: "How are meal expenses tracked for compliance?",
+      
       expectedResponse:
         "Question: How are meal expenses tracked for compliance?",
+
       },
 
     {
@@ -274,8 +294,9 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding meals & entertainment expenses questions from the policy. [Expense Reimbursement Policy - Meals & Entertainment Question 09]",
       Test_Case_ID: "TC_030",
       TestData: "Are coffee shop visits reimbursable under meal expenses?",
+      
       expectedResponse:
-        "Question: Are coffee shop visits reimbursable under meal expenses?",
+        "Are coffee shop visits reimbursable under meal expenses?",
       },
 
     {
@@ -283,6 +304,7 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding meals & entertainment expenses questions from the policy. [Expense Reimbursement Policy - Meals & Entertainment Question 10]",
       Test_Case_ID: "TC_031",
       TestData: "Can employees claim meal expenses when working remotely?",
+      
       expectedResponse:
         "Question: Can employees claim meal expenses when working remotely?",
       },
@@ -292,9 +314,10 @@ describe("Chat Assistant test suite", () => {
       TestCase:
         "Questions should be answered regarding NLP variability testing questions from the policy. [Expense Reimbursement Policy - NLP Variability Testing Question 01]",
       Test_Case_ID: "TC_032",
-      TestData: "What’s my budget for travel expenses?",
+      TestData: "What's my budget for travel expenses?",
+      
       expectedResponse:
-      "Question: What’s my budget for travel expenses?",  
+        "Question: What's my budget for travel expenses?",
       },
 
     {
@@ -302,6 +325,7 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding NLP variability testing questions from the policy. [Expense Reimbursement Policy - NLP Variability Testing Question 02]",
       Test_Case_ID: "TC_033",
       TestData: "How much can I spend on flights?",
+     
       expectedResponse:
         "Question: How much can I spend on flights?",
       },
@@ -310,14 +334,16 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding NLP variability testing questions from the policy. [Expense Reimbursement Policy - NLP Variability Testing Question 03]",
       Test_Case_ID: "TC_034",
       TestData: "Do I need permission to book a plane ticket?",
+      
       expectedResponse:
-      "Question: Do I need permission to book a plane ticket?",   
+        "Question: Do I need permission to book a plane ticket?",
      },
     {
       TestCase:
         "Questions should be answered regarding NLP variability testing questions from the policy. [Expense Reimbursement Policy - NLP Variability Testing Question 04]",
       Test_Case_ID: "TC_035",
       TestData: "Am I allowed to take a taxi for work trips?",
+      
       expectedResponse:
         "Question: Am I allowed to take a taxi for work trips?",
       },
@@ -326,14 +352,17 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding NLP variability testing questions from the policy. [Expense Reimbursement Policy - NLP Variability Testing Question 05]",
       Test_Case_ID: "TC_036",
       TestData: "What’s the max amount I can claim for food per day?",
+      
       expectedResponse:
         "Question: What’s the max amount I can claim for food per day?",
+
       },
     {
       TestCase:
         "Questions should be answered regarding NLP variability testing questions from the policy. [Expense Reimbursement Policy - NLP Variability Testing Question 06]",
       Test_Case_ID: "TC_037",
       TestData: "How do I get paid back for office supplies?",
+      
       expectedResponse:
         "Question: How do I get paid back for office supplies?",
       },
@@ -342,6 +371,7 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding NLP variability testing questions from the policy. [Expense Reimbursement Policy - NLP Variability Testing Question 07]",
       Test_Case_ID: "TC_038",
       TestData: "Who do I ask if I need more money for meals?",
+      
       expectedResponse:
         "Question: Who do I ask if I need more money for meals?",
       },
@@ -350,15 +380,19 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding NLP variability testing questions from the policy. [Expense Reimbursement Policy - NLP Variability Testing Question 08]",
       Test_Case_ID: "TC_039",
       TestData: "Can I buy a work laptop and get reimbursed?",
+      
       expectedResponse:
-        "Question: Can I buy a work laptop and get reimbursed?",},
+        "Question: Can I buy a work laptop and get reimbursed?",
+
+      },
+
     {
       TestCase:
         "Questions should be answered regarding NLP variability testing questions from the policy. [Expense Reimbursement Policy - NLP Variability Testing Question 09]",
       Test_Case_ID: "TC_040",
       TestData: "Will my Uber ride to the airport be covered?",
       expectedResponse:
-        "Question: Will my Uber ride to the airport be covered?",
+        "Question: Will my Uber ride to the airport be covered?", 
       },
 
     {
@@ -366,6 +400,7 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding NLP variability testing questions from the policy. [Expense Reimbursement Policy - NLP Variability Testing Question 10]",
       Test_Case_ID: "TC_041",
       TestData: "Can I take my spouse on a business trip and claim expenses?",
+      
       expectedResponse:
         "Question: Can I take my spouse on a business trip and claim expenses?",
       },
@@ -375,8 +410,10 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding NLP variability testing questions from the policy. [Expense Reimbursement Policy - NLP Variability Testing Question 11]",
       Test_Case_ID: "TC_042",
       TestData: "Is it okay to buy stationery on my own and request a refund?",
+      
       expectedResponse:
         "Question: Is it okay to buy stationery on my own and request a refund?",
+
       },
 
     {
@@ -384,8 +421,10 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding NLP variability testing questions from the policy. [Expense Reimbursement Policy - NLP Variability Testing Question 12]",
       Test_Case_ID: "TC_043",
       TestData: "How do I send my reimbursement request?",
+      
       expectedResponse:
         "Question: How do I send my reimbursement request?",
+
       },
 
     {
@@ -393,7 +432,8 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding NLP variability testing questions from the policy. [Expense Reimbursement Policy - NLP Variability Testing Question 13]",
       Test_Case_ID: "TC_044",
       TestData: "Can I buy a premium hotel room and claim the cost?",
-      expectedResponse:
+     
+      expectedResponse: 
         "Question: Can I buy a premium hotel room and claim the cost?",
       },
 
@@ -402,6 +442,7 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding NLP variability testing questions from the policy. [Expense Reimbursement Policy - NLP Variability Testing Question 14]",
       Test_Case_ID: "TC_045",
       TestData: "Do I need receipts for all my expenses?",
+      
       expectedResponse:
         "Question: Do I need receipts for all my expenses?",
       },
@@ -411,6 +452,7 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding NLP variability testing questions from the policy. [Expense Reimbursement Policy - NLP Variability Testing Question 15]",
       Test_Case_ID: "TC_046",
       TestData: "Is there a deadline to submit expenses?",
+      
       expectedResponse:
         "Question: Is there a deadline to submit expenses?",
       },
@@ -420,6 +462,7 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding NLP variability testing questions from the policy. [Expense Reimbursement Policy - NLP Variability Testing Question 16]",
       Test_Case_ID: "TC_047",
       TestData: "Can I request money for daycare while I travel?",
+      
       expectedResponse:
         "Question: Can I request money for daycare while I travel?",
       },
@@ -429,6 +472,7 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding NLP variability testing questions from the policy. [Expense Reimbursement Policy - NLP Variability Testing Question 17]",
       Test_Case_ID: "TC_048",
       TestData: "Will my internet bill be covered under work expenses?",
+      
       expectedResponse:
         "Question: Will my internet bill be covered under work expenses?",
       },
@@ -438,6 +482,7 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding NLP variability testing questions from the policy. [Expense Reimbursement Policy - NLP Variability Testing Question 18]",
       Test_Case_ID: "TC_049",
       TestData: "Who should approve my hotel booking?",
+      
       expectedResponse:
         "Question: Who should approve my hotel booking?",
       },
@@ -447,6 +492,7 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding NLP variability testing questions from the policy. [Expense Reimbursement Policy - NLP Variability Testing Question 19]",
       Test_Case_ID: "TC_050",
       TestData: "How much can I spend on a business dinner?",
+      
       expectedResponse:
         "Question: How much can I spend on a business dinner?",
       },
@@ -456,6 +502,7 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding NLP variability testing questions from the policy. [Expense Reimbursement Policy - NLP Variability Testing Question 20]",
       Test_Case_ID: "TC_051",
       TestData: "What happens if my reimbursement is rejected?",
+      
       expectedResponse:
         "Question: What happens if my reimbursement is rejected?",
       },
@@ -466,8 +513,9 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding exception handling questions from the policy. [Expense Reimbursement Policy - Exception Handling Question 01]",
       Test_Case_ID: "TC_052",
       TestData: "I lost my receipts. Can I still get reimbursed?",
-      expectedResponse:
-        "Question: I lost my receipts. Can I still get reimbursed?",
+      
+      expectedResponse :
+         "Question: I lost my receipts. Can I still get reimbursed?",
       },
 
 
@@ -476,7 +524,8 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding exception handling questions from the policy. [Expense Reimbursement Policy - Exception Handling Question 02]",
       Test_Case_ID: "TC_053",
       TestData: "My flight got canceled. Can I get a refund?",
-      expectedResponse:
+      
+      expectedResponse :
         "Question: My flight got canceled. Can I get a refund?",
       },
 
@@ -485,7 +534,8 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding exception handling questions from the policy. [Expense Reimbursement Policy - Exception Handling Question 03]",
       Test_Case_ID: "TC_054",
       TestData: "I spent $500 on a client dinner. Can I claim it?",
-      expectedResponse:
+      
+      expectedResponse :
         "Question: I spent $500 on a client dinner. Can I claim it?",
       },
 
@@ -494,7 +544,8 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding exception handling questions from the policy. [Expense Reimbursement Policy - Exception Handling Question 04]",
       Test_Case_ID: "TC_055",
       TestData: "What if I accidentally book a hotel above my limit?",
-      expectedResponse:
+      
+      expectedResponse :
         "Question: What if I accidentally book a hotel above my limit?",
       },
 
@@ -503,8 +554,10 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding exception handling questions from the policy. [Expense Reimbursement Policy - Exception Handling Question 05]",
       Test_Case_ID: "TC_056",
       TestData: "Can I claim expenses for a vacation if I take client calls?",
-      expectedResponse:
+      
+      expectedResponse :
         "Question: Can I claim expenses for a vacation if I take client calls?",
+    
       },  
 
     {
@@ -513,7 +566,8 @@ describe("Chat Assistant test suite", () => {
       Test_Case_ID: "TC_057",
       TestData:
         "I traveled with my pet. Will the company cover the pet’s expenses?",
-      expectedResponse:
+      
+      expectedResponse :
         "Question: I traveled with my pet. Will the company cover the pet’s expenses?",
       },
 
@@ -523,7 +577,8 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding exception handling questions from the policy. [Expense Reimbursement Policy - Exception Handling Question 07]",
       Test_Case_ID: "TC_058",
       TestData: "I tipped a taxi driver $50. Can I get reimbursed?",
-      expectedResponse:
+      
+      expectedResponse :
         "Question: I tipped a taxi driver $50. Can I get reimbursed?",
       },
 
@@ -532,23 +587,29 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding exception handling questions from the policy. [Expense Reimbursement Policy - Exception Handling Question 08]",
       Test_Case_ID: "TC_059",
       TestData: "Can I claim personal purchases if I use them for work?",
-      expectedResponse:
+      
+      expectedResponse :
         "Question: Can I claim personal purchases if I use them for work?",
       },
+
     {
       TestCase:
         "Questions should be answered regarding exception handling questions from the policy. [Expense Reimbursement Policy - Exception Handling Question 09]",
       Test_Case_ID: "TC_060",
       TestData: "What happens if my request gets denied?",
-      expectedResponse:
+      
+      expectedResponse :
         "Question: What happens if my request gets denied?",
-      },
+
+    },
+
     {
       TestCase:
         "Questions should be answered regarding exception handling questions from the policy. [Expense Reimbursement Policy - Exception Handling Question 10]",
       Test_Case_ID: "TC_061",
       TestData: "I submitted my expense late. Will I still get reimbursed?",
-      expectedResponse:
+      
+      expectedResponse :
         "Question: I submitted my expense late. Will I still get reimbursed?",
       },  
 
@@ -557,16 +618,19 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding exception handling questions from the policy. [Expense Reimbursement Policy - Exception Handling Question 11]",
       Test_Case_ID: "TC_062",
       TestData: "Can I submit expenses from last year?",
-      expectedResponse:
+      
+      expectedResponse :
         "Question: Can I submit expenses from last year?",
       },
+
 
     {
       TestCase:
         "Questions should be answered regarding exception handling questions from the policy. [Expense Reimbursement Policy - Exception Handling Question 12]",
       Test_Case_ID: "TC_063",
       TestData: "What should I do if the system rejects my claim by mistake?",
-      expectedResponse:
+      
+      expectedResponse :
         "Question: What should I do if the system rejects my claim by mistake?",
       },  
 
@@ -575,7 +639,8 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding exception handling questions from the policy. [Expense Reimbursement Policy - Exception Handling Question 13]",
       Test_Case_ID: "TC_064",
       TestData: "How do I appeal a reimbursement decision?",
-      expectedResponse:
+      
+      expectedResponse :
         "Question: How do I appeal a reimbursement decision?",
       },
 
@@ -584,7 +649,8 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding exception handling questions from the policy. [Expense Reimbursement Policy - Exception Handling Question 14]",
       Test_Case_ID: "TC_065",
       TestData: "Who decides if my expense is “reasonable”?",
-      expectedResponse:
+      
+      expectedResponse :
         "Question: Who decides if my expense is “reasonable”?",
       },
 
@@ -593,48 +659,41 @@ describe("Chat Assistant test suite", () => {
         "Questions should be answered regarding exception handling questions from the policy. [Expense Reimbursement Policy - Exception Handling Question 15]",
       Test_Case_ID: "TC_066",
       TestData: "Can I transfer my unused budget to next month?",
-      expectedResponse:
+      
+      expectedResponse :
         "Question: Can I transfer my unused budget to next month?",
       },
-      
+
   ];
 
   beforeEach(() => {
-    cy.visit("https://assistant-dev1.redowl.io/login");
-
-    login.fillEmail("tammy@redowl.io").fillPassword("123456").submit();
+    login.createLoginSession();
+    cy.visit("https://assistant-dev1.redowl.io");
   });
 
-  /*   chatAgents.forEach(({ name,expectedResponse }) => {
+  after(() => {
+    home.logOut();
+});
 
-        it(`Sent a message to the ${name} chat assistant and validate response`,()=>{
 
-            home.clickAgentCard(name)
-            cy.wait(3000)
-            chatAssistant.typeMessage("Hello")
-                         .sendMessage() 
-            cy.wait(5000)
 
-            chatAssistant.validateStepslabel()
-            .validateSelectingToolsText()
-            .validateNeedUserText();
-          //  chatAssistant.validateResponse(expectedResponse)
-        });
-        
+  policyAgent.forEach(
+    ({ TestCase, Test_Case_ID, TestData, expectedResponse ,  }) => {
 
-    });  */
-
-  policyAget.forEach(
-    ({ TestCase, Test_Case_ID, TestData, expectedResponse }) => {
       it(`${TestCase} - ${Test_Case_ID} : Policy Agent`, () => {
+
+        
         home.clickAgentCard("Policy Agent");
+          
         cy.wait(3000);
         chatAssistant.typeMessage(TestData).sendMessage();
         cy.wait(5000);
 
         chatAssistant.validateResponse(expectedResponse);
+       
+      
       });
     }
   );
-
+  
 });

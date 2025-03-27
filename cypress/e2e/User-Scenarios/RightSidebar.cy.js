@@ -19,15 +19,14 @@ describe("Right Sidebar test suite", () => {
   ]; 
 
   beforeEach(() => {
-    
-    login.visit()
-        .fillEmail("tammy@redowl.io")
-        .fillPassword("123456")
-        .submit();
+    login.createLoginSession();
+    cy.visit('https://assistant-dev1.redowl.io');
+});
 
-    cy.wait(2500);
-    
-  });
+
+after(() => {
+  home.logOut();
+});
 
   chatAgents.forEach(({ name,description }) => {
 

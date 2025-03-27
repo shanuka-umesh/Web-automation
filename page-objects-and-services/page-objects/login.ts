@@ -16,8 +16,6 @@
         .type('{selectall}{backspace}', { force: true }); 
         cy.get(this.txt_email)
         .type('tammy@redowl.io', { force: true });
-
-
         
         return this;
     }
@@ -43,6 +41,22 @@
         return this;
     }
     
+    createLoginSession(){
+        cy.session('login', () => {
+            this.visit()
+            .fillEmail("tammy@redowl.io")
+            .fillPassword("123456")
+            .submit();
+            
+            cy.url().should('not.include', '/login');
+        }, {
+            
+            validate() {
+                cy.visit('https://assistant-dev1.redowl.io');
+                cy.url().should('not.include', '/login');
+            }
+        });
+    }
 
 
 }       

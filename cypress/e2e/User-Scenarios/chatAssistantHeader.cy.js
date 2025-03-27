@@ -16,15 +16,14 @@ describe("Chat Assistant Header test suite", () => {
         { name: "Board Paper Agent" }
     ];
 
+
     beforeEach(() => {
-        
-            cy.wait(1000);
-            cy.visit('https://assistant-dev1.redowl.io/login');
-            login.fillEmail("tammy@redowl.io")
-                .fillPassword("123456")
-                .submit();
-            cy.wait(5000);
-        
+        login.createLoginSession();
+        cy.visit('https://assistant-dev1.redowl.io');
+    });
+
+    after(() => {
+        home.logOut();
     });
 
     chatAgents.forEach(({ name }) => {
